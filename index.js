@@ -1,7 +1,11 @@
+// selecting all the buttons and assigning them to the "numberofbutton" variable
 var numberofbutton = document.querySelectorAll(".drum").length;
 
+//looping through all the button tags
 for(var i=0; i<numberofbutton; i++){
  
+ //selecting a each button and adding the event listener
+ //this part of the code works for clicks 
     document.querySelectorAll(".drum")[i].addEventListener("click", function(){
         var button = this.innerHTML;
         playsound(button);
@@ -10,11 +14,13 @@ for(var i=0; i<numberofbutton; i++){
     });
 }
 
+//this part of the code works for the inputs from keyboard
 document.addEventListener("keypress",function(event){
     playsound(event.key);
     buttonanimation(event.key);
 })
 
+//assigning audio to a particular button using switch-case
 function playsound(key){
     switch(key){
             case "a":
@@ -57,6 +63,7 @@ function playsound(key){
         }    
 }
 
+//animation when a particular button is clicked or pressed
 function buttonanimation(currentkey){
     var activebutton  = document.querySelector("."+currentkey);
     activebutton.classList.add('pressed');
